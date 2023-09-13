@@ -4,11 +4,14 @@ import userRouter from './routes/Routes.js';
 import jwt from 'jsonwebtoken';
 import jwtMiddleware from './middlewares/index.js';
 
+//JWT token creation
 const createToken = () => {
     return jwt.sign("my payload", "my secret");
 }
 const token = createToken();
 console.log(token)
+
+
 //Express
 const app = express();
 const PORT = 3000;
@@ -18,12 +21,13 @@ connectDB("mongodb://127.0.0.1:27017/Student");
 //MIDDLEWARE
 //for form submission
 app.use(urlencoded({ extended: true }));
+//for JWT token verification
 app.use(jwtMiddleware);
 
 
 
 
-
+//ROUTES 
 app.use('/student/api', userRouter);
 
 //Server
