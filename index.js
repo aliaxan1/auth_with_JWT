@@ -2,7 +2,12 @@ import express, { query, urlencoded } from 'express';
 import connectDB from './dbCon.js';
 import userRouter from './routes/Routes.js';
 import jwt from 'jsonwebtoken';
-import jwtMiddleware from './middlewares/index.js';
+
+//importing passport
+import './middlewares/passport.js';
+
+
+import passport from 'passport';
 
 //JWT token creation
 const createToken = () => {
@@ -22,7 +27,10 @@ connectDB("mongodb://127.0.0.1:27017/Student");
 //for form submission
 app.use(urlencoded({ extended: true }));
 //for JWT token verification
-app.use(jwtMiddleware);
+app.use(passport.initialize());
+
+app.use(passport.authenticate('jwt', { session: false }))
+
 
 
 
