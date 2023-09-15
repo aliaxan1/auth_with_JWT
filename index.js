@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 import passport from 'passport';
 //importing passport
 import './middlewares/passport.js';
+import cors from 'cors';
 
 
 
@@ -23,6 +24,8 @@ const PORT = 3000;
 connectDB("mongodb://127.0.0.1:27017/Student");
 
 //MIDDLEWARE
+//for api autorization
+app.use(cors());
 //for form submission
 app.use(urlencoded({ extended: true }));
 //for JWT token verification
