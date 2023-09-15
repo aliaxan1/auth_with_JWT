@@ -2,12 +2,11 @@ import express, { query, urlencoded } from 'express';
 import connectDB from './dbCon.js';
 import userRouter from './routes/Routes.js';
 import jwt from 'jsonwebtoken';
-
+import passport from 'passport';
 //importing passport
 import './middlewares/passport.js';
 
 
-import passport from 'passport';
 
 //JWT token creation
 const createToken = () => {

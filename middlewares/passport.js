@@ -4,10 +4,11 @@ import passport from 'passport';
 const opts = {};
 
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'Random string';
+opts.secretOrKey = 'my secret';
 
 passport.use(new JwtStrategy(opts, async (jwt_payload, done) => {
-    console.log(jwt_payload);
+    // console.log(jwt_payload);
+    done(null, jwt_payload)
 }));
 
 
